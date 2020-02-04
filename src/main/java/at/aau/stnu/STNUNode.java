@@ -2,7 +2,6 @@ package at.aau.stnu;
 import java.util.UUID;
 
 /**
- * This class is the abstract representation of nodes in a graph. The specification depends on the graph type (STNU or CSTNU)
  * @author Josef Lubas
  */
 
@@ -10,6 +9,12 @@ public class STNUNode {
 
     private boolean isContingent;
     private STNUNode activationTimepoint;
+
+    public boolean isParam() {
+        return isParam;
+    }
+
+    private boolean isParam;
     /**
      * generates an unique id
      */
@@ -23,11 +28,13 @@ public class STNUNode {
         this.name = name;
         this.isContingent=true;
         this.activationTimepoint = activation;
+        this.isParam = false;
     }
-    public STNUNode(String name){
+    public STNUNode(String name, boolean isParam){
         this.name = name;
         this.isContingent=false;
         this.activationTimepoint=null;
+        this.isParam = isParam;
     }
 
     public String getId(){

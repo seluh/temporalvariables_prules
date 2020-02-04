@@ -22,24 +22,21 @@ public class RULSolver {
 
     private Logger logger;
     private STNUNode z;
+   private int deadline;
 
 
-    public RULSolver(STNU stnu, boolean logging, int deadline) throws CloneNotSupportedException {
+    public RULSolver(STNU stnu, boolean logging) throws CloneNotSupportedException {
         this.derivedSTNU = null;
         this.derivedSTNU = (STNU) stnu.clone();
-        if(deadline!=Integer.MAX_VALUE){
-            h = deadline;
-        }else{
-            h = derivedSTNU.getMostNegative() * (derivedSTNU.getNodeList().size()*-1);
-        }
-      //makePointedAndUpperbounded();
-       // init();
+        this.deadline = stnu.getDeadline();
+        init();
+        System.out.println("Original STNU:");
         derivedSTNU.printSTNU();
 
 
     }
 
-    public void apply(boolean rulPlus){
+    public Status apply(boolean rulPlus, boolean computeParam){
         ArrayList<STNUNode> nodeList = derivedSTNU.getNodeList();
 
         Status status;
@@ -57,7 +54,7 @@ public class RULSolver {
                     ArrayList<NumericEdge> incomming = getSuccessor(interim);
                     for (NumericEdge e2 :
                             incomming) {
-                      applyRules(e1,e2,rulPlus,status);
+                      applyRules(e1,e2,rulPlus,computeParam,status);
                        // System.out.println("hasDerived"+status.hasDerived);
                        if(status.hasNegativeLoop){
                            System.out.println("-------------------------negativeLoop---------------------------");
@@ -69,9 +66,10 @@ public class RULSolver {
             nodeList = derivedSTNU.getNodeList();
             System.out.println("---------------------------------------------------------------------run:"+runs);
         } while(status.hasDerived);
+       return status;
     }
 
-    private Status applyRules(NumericEdge e1, NumericEdge e2, boolean rulPlus, Status status){
+    private Status applyRules(NumericEdge e1, NumericEdge e2, boolean rulPlus, boolean computeParams, Status status){
         STNUNode source = e1.getSource();
         STNUNode target = e2.getTarget();
         /**
@@ -90,32 +88,63 @@ public class RULSolver {
                 System.out.println("RELAX derived: "+ e1.toString() +" + "+e2.toString()+ " = " +newEdge.toString());
             }
         }
-        retVal = upperApplicable(e1,e2,rulPlus);
-        if(retVal!=Integer.MIN_VALUE){
-           dcCheck(source,target,retVal, status);
-            if(status.hasNegativeLoop){
-                System.out.println("Negative Loop at: "+source.getName());
-                return status;
+        if(!computeParams) {
+            retVal = upperApplicable(e1, e2, rulPlus);
+            if (retVal != Integer.MIN_VALUE) {
+                dcCheck(source, target, retVal, status);
+                if (status.hasNegativeLoop) {
+                    System.out.println("Negative Loop at: " + source.getName());
+                    return status;
+                }
+                NumericEdge newEdge = new NumericEdge(source, target, retVal);
+                if (updateEdge(newEdge)) {
+                    status.hasDerived = true;
+                    System.out.println("UPPER derived: " + e1.toString() + " + " + e2.toString() + " = " + newEdge.toString());
+                }
             }
-            NumericEdge newEdge = new NumericEdge(source, target,retVal);
-            if(updateEdge(newEdge)) {
-                status.hasDerived = true;
-                System.out.println("UPPER derived: "+ e1.toString() +" + "+e2.toString()+ " = " +newEdge.toString());
+            retVal = lowerApplicable(e1, e2);
+            if (retVal != Integer.MIN_VALUE) {
+                dcCheck(source, target, retVal, status);
+                if (status.hasNegativeLoop) {
+                    System.out.println("Negative Loop at: " + source.getName());
+                    return status;
+                }
+                NumericEdge newEdge = new NumericEdge(source, target, retVal);
+                if (updateEdge(newEdge)) {
+                    status.hasDerived = true;
+                    System.out.println("LOWER derived: " + e1.toString() + " + " + e2.toString() + " = " + newEdge.toString());
+                }
             }
         }
-        retVal = lowerApplicable(e1,e2);
-        if(retVal!=Integer.MIN_VALUE){
-            dcCheck(source,target,retVal, status);
-            if(status.hasNegativeLoop){
-                System.out.println("Negative Loop at: "+source.getName());
-                return status;
+        else{
+            retVal = uUpperApplicable(e1, e2, rulPlus);
+            if (retVal != Integer.MIN_VALUE) {
+                dcCheck(source, target, retVal, status);
+                if (status.hasNegativeLoop) {
+                    System.out.println("Negative Loop at: " + source.getName());
+                    return status;
+                }
+                NumericEdge newEdge = new NumericEdge(source, target, retVal);
+                if (updateEdge(newEdge)) {
+                    status.hasDerived = true;
+                    System.out.println("UPPER derived: " + e1.toString() + " + " + e2.toString() + " = " + newEdge.toString());
+                }
             }
-            NumericEdge newEdge = new NumericEdge(source, target,retVal);
-            if(updateEdge(newEdge)) {
-                status.hasDerived = true;
-                System.out.println("LOWER derived: "+ e1.toString() +" + "+e2.toString()+ " = " +newEdge.toString());
+            retVal = lLowerApplicable(e1, e2);
+            if (retVal != Integer.MIN_VALUE) {
+                dcCheck(source, target, retVal, status);
+                if (status.hasNegativeLoop) {
+                    System.out.println("Negative Loop at: " + source.getName());
+                    return status;
+                }
+                NumericEdge newEdge = new NumericEdge(source, target, retVal);
+                if (updateEdge(newEdge)) {
+                    status.hasDerived = true;
+                    System.out.println("LOWER derived: " + e1.toString() + " + " + e2.toString() + " = " + newEdge.toString());
+                }
             }
         }
+
         return status;
     }
 
@@ -199,7 +228,7 @@ public class RULSolver {
          * Adding dummy time-point Z;
          * connecting Z to every node P with h (if P is in Tx)
          */
-        z = new STNUNode("Z");
+        z = new STNUNode("Z", false);
         derivedSTNU.addNode(z);
         for (STNUNode target:
                 derivedSTNU.getNodeList()) {
@@ -239,6 +268,14 @@ public class RULSolver {
     }
 
     public class Status{
+        public boolean getHasNegativeLoop() {
+            return hasNegativeLoop;
+        }
+
+        public boolean getHasDerived() {
+            return hasDerived;
+        }
+
         private boolean hasNegativeLoop;
         private boolean hasDerived;
 
@@ -295,7 +332,7 @@ public class RULSolver {
         return derivedSTNU;
     }
     private void init() {
-        z = new STNUNode("Z");
+        z = new STNUNode("Z", false);
         derivedSTNU.addNode(z);
         for (STNUNode source :
                 derivedSTNU.getNodeList()) {
@@ -304,5 +341,57 @@ public class RULSolver {
                 derivedSTNU.addEdge(e);
             }
         }
+        if(deadline!=Integer.MAX_VALUE){
+            STNUNode end = derivedSTNU.getNode("end");
+            NumericEdge e = new NumericEdge(z,end, deadline);
+            derivedSTNU.addEdge(e);
+        }
+    }
+
+    private int uUpperApplicable (NumericEdge e1, NumericEdge e2, boolean rulPlus){
+        STNUNode p = e1.getSource();
+        if(!p.isParam()){
+            return Integer.MIN_VALUE;
+        }
+        STNUNode c = e1.getTarget();
+        STNUNode ac = e2.getTarget();
+        int v = e1.getNonLabeledValue();
+        int uc = e2.getLabeledValue();
+        // System.out.println("Checking UPPER "+p.getName() +"-- "+v+" --> "+c.getName()+" -- "+uc+" -->"+ac.getName());
+        if(v!=Integer.MAX_VALUE && uc!=Integer.MAX_VALUE && e2.getLabel().getType().equals(LabelType.uC) && !p.equals(c)&&!c.equals(ac)){
+            if(c.isContingent() && !ac.isContingent() && c.getActivationTimepoint().equals(ac)){
+
+                    // System.out.println("max( "+v+" - "+uc+" , "+lc+") = "+Integer.max(v+uc,lc));
+                    return v+uc;
+                }
+            }
+
+        return Integer.MIN_VALUE;
+    }
+
+    private int lLowerApplicable (NumericEdge e1, NumericEdge e2){
+        STNUNode ac = e1.getSource();
+        STNUNode c = e1.getTarget();
+        STNUNode p = e2.getTarget();
+        if(!p.isParam()){
+            return Integer.MIN_VALUE;
+        }
+        int lc = e1.getLabeledValue();
+        int w = e2.getNonLabeledValue();
+        //System.out.println("Checking LOWER "+ac.getName() +"-- "+lc+" --> "+c.getName()+" -- "+w+" -->"+r.getName());
+        //System.out.println("   "+r.getName()+" is contingent? "+r.isContingent());
+        if(lc!=Integer.MAX_VALUE && w!=Integer.MAX_VALUE && e1.getLabel().getType().equals(LabelType.lC)&&!ac.equals(c)&&!c.equals(p)){
+            if(!ac.isContingent() && c.isContingent() && c.getActivationTimepoint().equals(ac)){
+                //System.out.println("   "+w+" <= 0 ?");
+
+                    //      System.out.println("   true");
+                    return lc+w;
+
+                // System.out.println(false);
+
+                }
+
+        }
+        return Integer.MIN_VALUE;
     }
 }

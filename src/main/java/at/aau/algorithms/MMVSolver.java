@@ -40,7 +40,7 @@ public class MMVSolver {
         }else{
             h = derivedSTNU.getMostNegative() * (derivedSTNU.getNodeList().size()*-1);
         }
-        z = new STNUNode("Z");
+        z = new STNUNode("Z",false);
         derivedSTNU.addNode(z);
         for (STNUNode target:
                 derivedSTNU.getNodeList()) {

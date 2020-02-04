@@ -67,7 +67,7 @@ public final class ProcessReader {
                                 }
                                 instance = instance.substring(instance.indexOf(" ") + 1);
                                 if(nodetype.equals("Task")) {
-                                    STNUNode actStart = new STNUNode(id+".s");
+                                    STNUNode actStart = new STNUNode(id+".s",false);
                                     processNodes.add(actStart);
                                     STNUNode actEnd = new STNUNode(id+".e",actStart);
                                     processNodes.add(actEnd);
@@ -80,8 +80,11 @@ public final class ProcessReader {
                                     processEdges.add(new NumericEdge(actEnd,actStart,uc*-1,new Label(actEnd,LabelType.uC)));
                                 }
                                 // start nodes are not defined as start and end
-                                else {
-                                    processNodes.add(new STNUNode(id));
+                                else if(nodetype.equals("Parameter")){
+                                    processNodes.add(new STNUNode(id,true));
+                                }
+                                else{
+                                    processNodes.add(new STNUNode(id,false));
                                 }
                             } catch (StringIndexOutOfBoundsException ioobe) {
                                 //graph.nodes.add(instance.toLowerCase());
@@ -89,7 +92,7 @@ public final class ProcessReader {
                                 //   br.readLine();
                             }
                         }
-                        processEdges.add(new NumericEdge(getNode("start"),getNode("end"),processdeadline, new Label(getNode("start"),LabelType.nC)));
+                       // processEdges.add(new NumericEdge(getNode("start"),getNode("end"),processdeadline, new Label(getNode("start"),LabelType.nC)));
                         break;
 
                     case "[edges]":
@@ -132,11 +135,12 @@ public final class ProcessReader {
                             int nvalue = Integer.parseInt(value);
                             STNUNode s = getNode(source);
                             STNUNode t = getNode(target);
-                            //lbc´s are defined by a - prefix while ubc´s are defined by no prefix
-                            if (type.contains("UBC")&&(!source.contains("start")&&!target.contains("end"))) {
+
+                            if (type.equals("UBC")) {
                                 processEdges.add(new NumericEdge(s,t,nvalue));
                             }
-                            else { //lbc
+                            else if(type.equals("LBC")) { //lbc
+
                                 processEdges.add(new NumericEdge(s,t,nvalue*-1));
                             }
 
@@ -163,7 +167,7 @@ public final class ProcessReader {
         }
     }
     public STNU getSTNU(){
-        return new STNU(processName,processNodes,processEdges);
+        return new STNU(processName,processNodes,processEdges, processdeadline);
     }
 
     private STNUNode getNode(String name){

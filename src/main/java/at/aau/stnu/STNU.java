@@ -29,7 +29,11 @@ public class STNU extends Graph implements Cloneable {
     private ArrayList<STNUNode> nodeList = new ArrayList<>();
     private int mostNegative = Integer.MAX_VALUE;
 
+    public int getDeadline() {
+        return deadline;
+    }
 
+    private int deadline = Integer.MAX_VALUE;
     private HashMap<STNUNode, HashMap<STNUNode, NumericEdge>> network;
 
     /**
@@ -58,6 +62,26 @@ public class STNU extends Graph implements Cloneable {
             addEdge(e);
         }
 
+    }
+    public STNU(String name, ArrayList<STNUNode> nodes, ArrayList<NumericEdge> edges, int deadline) {
+        this.network = new HashMap<>();
+        this.numberOfNodes = nodes.size();
+        this.name = name;
+        for (STNUNode n :
+                nodes) {
+            addNode(n);
+        }
+        for (NumericEdge e :
+                edges) {
+            if(e.getLabeledValue() < mostNegative){
+                mostNegative = e.getLabeledValue();
+            }
+            if(e.getNonLabeledValue() < mostNegative){
+                mostNegative = e.getNonLabeledValue();
+            }
+            addEdge(e);
+        }
+            this.deadline = deadline;
     }
 
     /**
@@ -104,6 +128,15 @@ public class STNU extends Graph implements Cloneable {
         NumericEdge e = sourceMap.get(target);
         return e;
     }
+    public STNUNode getNode(String name) {
+        for (STNUNode node: nodeList
+             ) {
+            if (node.getName().equals(name)){
+                return node;
+            }
+        }
+        return null;
+    }
 
 
     /**
@@ -120,7 +153,10 @@ public class STNU extends Graph implements Cloneable {
             }
             System.out.println();
         }
+
     }
+
+
 
     public Object clone() throws CloneNotSupportedException {
         return super.clone();
@@ -132,6 +168,8 @@ public class STNU extends Graph implements Cloneable {
     public HashMap<STNUNode, HashMap<STNUNode, NumericEdge>> getNetwork() {
         return network;
     }
+
+
 
 }
 
