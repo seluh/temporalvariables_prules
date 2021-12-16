@@ -1,0 +1,43 @@
+[graph]
+graphtype = TcsGraph
+name = generated-graph
+deadline = 118
+
+[nodes]
+start Start
+PAR_10 AndSplit
+RegionalShipping' Task 10, 18 n
+NationalShipping' Task 10, 20 n
+InternationalShipping' Task 11, 17 n
+CheckInventory' Task 5, 8 c
+PackageGoods' Task 14, 16 n
+PAR_10-1-join AndJoin
+PAR_35 AndSplit
+PayByCreditCard' Task 18, 19 n
+PayByCheck' Task 11, 24 n
+PAR_35-1-join AndJoin
+Confirm-Selection' Task 8, 10 n
+SelectGoods' Task 11, 16 n
+ArchiveOrder' Task 7, 13 n
+end End
+
+[edges]
+start PAR_10
+PAR_10 CheckInventory'
+PAR_10 RegionalShipping'
+RegionalShipping' NationalShipping'
+NationalShipping' InternationalShipping'
+InternationalShipping' PAR_10-1-join
+CheckInventory' PackageGoods'
+PackageGoods' PAR_10-1-join
+PAR_10-1-join PAR_35
+PAR_35 PayByCreditCard'
+PAR_35 PayByCheck'
+PayByCreditCard' PAR_35-1-join
+PayByCheck' PAR_35-1-join
+PAR_35-1-join Confirm-Selection'
+Confirm-Selection' SelectGoods'
+SelectGoods' ArchiveOrder'
+ArchiveOrder' end
+
+[constraints]

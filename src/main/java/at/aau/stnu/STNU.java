@@ -9,6 +9,15 @@ import java.util.*;
  * constraints(precedence/temporal). Used to perform several reasoning tasks.
  */
 public class STNU extends Graph implements Cloneable {
+    public String getName() {
+        return name;
+    }
+
+    public ArrayList<NumericEdge> getEdgeList() {
+        return edgeList;
+    }
+
+    ArrayList<NumericEdge> edgeList = new ArrayList<>();
     /**
      * Human readable name of the STNU
      */
@@ -33,6 +42,11 @@ public class STNU extends Graph implements Cloneable {
         return deadline;
     }
 
+    public int getNumberOfConstraints() {
+        return numberOfConstraints;
+    }
+
+    private int numberOfConstraints;
     private int deadline = Integer.MAX_VALUE;
     private HashMap<STNUNode, HashMap<STNUNode, NumericEdge>> network;
 
@@ -63,7 +77,9 @@ public class STNU extends Graph implements Cloneable {
         }
 
     }
-    public STNU(String name, ArrayList<STNUNode> nodes, ArrayList<NumericEdge> edges, int deadline) {
+    public STNU(String name, ArrayList<STNUNode> nodes, ArrayList<NumericEdge> edges, int deadline, int numberOfConstraints) {
+        this.edgeList = edges;
+        this.numberOfConstraints = numberOfConstraints;
         this.network = new HashMap<>();
         this.numberOfNodes = nodes.size();
         this.name = name;
@@ -103,7 +119,11 @@ public class STNU extends Graph implements Cloneable {
     public void addEdge(NumericEdge e) {
         STNUNode source = e.getSource();
         STNUNode target = e.getTarget();
+       // System.out.println(source.getName()+" -> "+target.getName());
+       // System.out.println(source.toString() + " to "+target.toString());
+
         this.network.get(source).put(target, e);
+
     }
 
     /**

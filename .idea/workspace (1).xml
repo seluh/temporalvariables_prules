@@ -1,44 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
-  <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:github" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="ac8a031e-8b52-4f4b-bfce-b2cf6304ab7f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/ (1).name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/(1).name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler (1).xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc (1).xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules (1).xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs (1).xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace (1).xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TemporalVariables (1).iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/temporal-variables (1).iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/temporal-variables.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
@@ -52,18 +16,10 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/at/aau/stnu/STNU.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/aau/stnu/STNU.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/at/aau/stnu/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/at/aau/stnu/main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/testprocesses/1.swd" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/testprocesses/n10/1.swd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/at/aau/abstractGraph/Edge.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/at/aau/abstractGraph/Edge.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/at/aau/abstractGraph/Graph.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/at/aau/abstractGraph/Graph.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/at/aau/abstractGraph/LabelType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/at/aau/abstractGraph/LabelType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/at/aau/algorithms/MMVSolver$Status.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/at/aau/algorithms/MMVSolver$Status.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/at/aau/algorithms/MMVSolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/at/aau/algorithms/MMVSolver.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/at/aau/algorithms/RULSolver$Status.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/at/aau/algorithms/RULSolver$Status.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/at/aau/algorithms/RULSolver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/at/aau/algorithms/RULSolver.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/at/aau/io/ProcessReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/at/aau/io/ProcessReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/at/aau/stnu/Label.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/at/aau/stnu/Label.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/at/aau/stnu/NumericEdge.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/at/aau/stnu/NumericEdge.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/at/aau/stnu/STNU.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/at/aau/stnu/STNU.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/at/aau/stnu/STNUNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/at/aau/stnu/STNUNode.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/at/aau/stnu/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/at/aau/stnu/main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/testprocesses/1.swd" beforeDir="false" />
     </list>
@@ -85,16 +41,15 @@
   <component name="ProjectId" id="1c2uO4aYxXIFbWGK2NwMBXKhT9Q" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../plf/TVBackup" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunManager">
     <configuration name="main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -116,7 +71,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -130,16 +84,64 @@
     </task>
     <servers />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
+  <component name="WindowStateProjectService">
+    <state x="-1368" y="352" key="#Project_Structure" timestamp="1590587550126">
+      <screen x="-1920" y="174" width="1920" height="1040" />
+    </state>
+    <state x="-1368" y="352" key="#Project_Structure/0.0.2560.1400/-1920.174.1920.1040@-1920.174.1920.1040" timestamp="1590587550126" />
+    <state x="-1125" y="511" key="FileChooserDialogImpl" timestamp="1590476263449">
+      <screen x="-1920" y="174" width="1920" height="1040" />
+    </state>
+    <state x="-1125" y="511" key="FileChooserDialogImpl/0.0.2560.1400/-1920.174.1920.1040@-1920.174.1920.1040" timestamp="1590476263449" />
+    <state x="1060" y="454" key="FileChooserDialogImpl/0.0.2560.1400/-1920.174.1920.1040@0.0.2560.1400" timestamp="1590081625783" />
+    <state width="1877" height="268" key="GridCell.Tab.0.bottom" timestamp="1590590473088">
+      <screen x="-1920" y="174" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="268" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.174.1920.1040@-1920.174.1920.1040" timestamp="1590590473088" />
+    <state width="2517" height="382" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.174.1920.1040@0.0.2560.1400" timestamp="1589834707116" />
+    <state width="1877" height="268" key="GridCell.Tab.0.center" timestamp="1590590473088">
+      <screen x="-1920" y="174" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="268" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.174.1920.1040@-1920.174.1920.1040" timestamp="1590590473088" />
+    <state width="2517" height="382" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.174.1920.1040@0.0.2560.1400" timestamp="1589834707116" />
+    <state width="1877" height="268" key="GridCell.Tab.0.left" timestamp="1590590473088">
+      <screen x="-1920" y="174" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="268" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.174.1920.1040@-1920.174.1920.1040" timestamp="1590590473088" />
+    <state width="2517" height="382" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.174.1920.1040@0.0.2560.1400" timestamp="1589834707116" />
+    <state width="1877" height="268" key="GridCell.Tab.0.right" timestamp="1590590473088">
+      <screen x="-1920" y="174" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="268" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.174.1920.1040@-1920.174.1920.1040" timestamp="1590590473088" />
+    <state width="2517" height="382" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.174.1920.1040@0.0.2560.1400" timestamp="1589834707116" />
+    <state width="2517" height="492" key="GridCell.Tab.1.bottom" timestamp="1589807417281">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.1.bottom/0.0.2560.1400/-1920.174.1920.1040@0.0.2560.1400" timestamp="1589807417281" />
+    <state width="2517" height="492" key="GridCell.Tab.1.center" timestamp="1589807417281">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.1.center/0.0.2560.1400/-1920.174.1920.1040@0.0.2560.1400" timestamp="1589807417281" />
+    <state width="2517" height="492" key="GridCell.Tab.1.left" timestamp="1589807417281">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.1.left/0.0.2560.1400/-1920.174.1920.1040@0.0.2560.1400" timestamp="1589807417281" />
+    <state width="2517" height="492" key="GridCell.Tab.1.right" timestamp="1589807417281">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="492" key="GridCell.Tab.1.right/0.0.2560.1400/-1920.174.1920.1040@0.0.2560.1400" timestamp="1589807417281" />
+    <state x="760" y="274" key="SettingsEditor" timestamp="1589739237598">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="760" y="274" key="SettingsEditor/0.0.2560.1400/-1920.174.1920.1040@0.0.2560.1400" timestamp="1589739237598" />
+    <state x="-1188" y="563" key="com.intellij.ide.util.TipDialog" timestamp="1590586872838">
+      <screen x="-1920" y="174" width="1920" height="1040" />
+    </state>
+    <state x="-1188" y="563" key="com.intellij.ide.util.TipDialog/0.0.2560.1400/-1920.174.1920.1040@-1920.174.1920.1040" timestamp="1590586872838" />
+    <state x="976" y="524" key="com.intellij.ide.util.TipDialog/0.0.2560.1400/-1920.174.1920.1040@0.0.2560.1400" timestamp="1590081598575" />
+    <state x="1089" y="617" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589751963530">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1089" y="617" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1400/-1920.174.1920.1040@0.0.2560.1400" timestamp="1589751963530" />
   </component>
 </project>
